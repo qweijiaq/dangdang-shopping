@@ -1,0 +1,29 @@
+{
+  "name": "dangdang-shopping-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open microsoft-edge",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "good-storage": "^1.1.1",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^20.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^7.2.0",
+    "eslint-plugin-vue": "^7.20.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9",
+    "vue-eslint-parser": "^9.3.1",
+    "vue-tsc": "^1.4.2"
+  }
+}
