@@ -1,11 +1,3 @@
-// export default class UserInfo {
-//   userid!: number
-//   username!: string
-//   password!: string
-//   address!: string
-//   valid!: number
-// }
-
 import { Column, Model, Table } from 'sequelize-typescript'
 import { DataTypes } from 'sequelize'
 

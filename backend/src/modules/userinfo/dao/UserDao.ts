@@ -1,5 +1,6 @@
 import { Op } from 'sequelize'
 import { model } from '../defineModel'
+// import model from '../../decorateModel/UserInfo'
 import { Sequelize } from 'sequelize-typescript'
 class UserDao {
   static userDao: UserDao = new UserDao()

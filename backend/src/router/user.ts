@@ -1,7 +1,7 @@
 import { success } from '../common/ResResult'
 import { Context } from 'koa'
 import Router from 'koa-router'
-import userDao, { Userinfo } from '../dao/UserDao'
+import userDao, { Userinfo } from '../modules/userinfo/dao/UserDao'
 
 const router = new Router()
 

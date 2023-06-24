@@ -1,4 +1,4 @@
-import { sequelize } from '../dao/BaseDao'
+import { sequelize } from '../../BaseDao'
 import { DataTypes } from 'sequelize'
 
 class UserInfo {
