@@ -1,15 +1,76 @@
+import { Op } from 'sequelize'
 import { model } from '../defineModel'
-class UserDaoDefine {
-  static addUser(userinfo: Userinfo) {
+import { Sequelize } from 'sequelize-typescript'
+class UserDao {
+  static userDao: UserDao = new UserDao()
+
+  addUser(userinfo: Userinfo) {
     return model.create(userinfo)
   }
-  static findAllUsers() {
+  findAllUsers() {
     return model.findAll()
   }
-  static findByProps() {
+  findByProps() {
     return model.findAll({
       raw: true,
       attributes: ['username', 'password'],
+    })
+  }
+  findByLike() {
+    return model.findAll({
+      raw: true,
+      where: {
+        username: {
+          [Op.like]: 'wang%',
+        },
+      },
+    })
+  }
+  findByLikeOfKey(key: string) {
+    const searchKey = `%${key}%`
+    return model.findAll({
+      raw: true,
+      where: {
+        username: {
+          [Op.like]: searchKey,
+        },
+      },
+    })
+  }
+  findByUsernameAndAddress() {
+    return model.findAll({
+      raw: true,
+      where: {
+        [Op.and]: [
+          {
+            username: {
+              [Op.like]: '%i%',
+            },
+          },
+          {
+            address: {
+              [Op.like]: '%北%',
+            },
+          },
+        ],
+      },
+    })
+  }
+  countUserinfo() {
+    return model.findAll({
+      raw: true,
+      group: 'address',
+      attributes: ['address', [Sequelize.fn('count', Sequelize.col('valid')), 'totalCount']],
+      where: {
+        valid: 1,
+      },
+    })
+  }
+  findUserWithPager(offset: number, size: number) {
+    return model.findAll({
+      raw: true,
+      limit: size,
+      offset: offset,
     })
   }
 }
@@ -22,4 +83,4 @@ export type Userinfo = {
   valid: number
 }
 
-export const { addUser, findAllUsers, findByProps } = UserDaoDefine
+export default UserDao.userDao
